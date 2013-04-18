@@ -1,10 +1,17 @@
 {
-    "name": "cush"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "*"
-    , "jade": ">= 0.0.1"
-    , "filed": "*"
-  }
+    "name": "cush",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "*",
+        "jade": ">= 0.0.1",
+        "filed": "*"
+    },
+    "subdomain": "cush",
+    "scripts": {
+        "start": "app.js"
+    },
+    "engines": {
+        "node": "0.8.x"
+    }
 }

@@ -40,8 +40,29 @@ app.get('/', function(req, res){
 
 app.post('/', function(req, res) {
 
-  
+  // var tts = stenographer('-t', 'wav');
   var tts = spawn('stenographer', ['-t', 'wav']);
+  filed(req.files.audio.path).pipe(tts.stdin);
+
+  // processAudio(req.files.audio.path, function(result){
+    // console.log(result);
+    // res.send('Uploaded ' + req.files.audio.name + ' to ' + req.files.audio.path);
+    tts.stdout.pipe(res);
+  // })
+  
+});
+
+app.get('/es', function(req, res){
+  res.send('<form method="post" enctype="multipart/form-data">'
+    + '<p>file: <input type="file" name="audio" /></p>'
+    + '<p><input type="submit" value="Upload" /></p>'
+    + '</form>');
+});
+
+app.post('/es', function(req, res) {
+
+  
+  var tts = spawn('stenographer-es', ['-t', 'wav']);
   filed(req.files.audio.path).pipe(tts.stdin);
 
   // processAudio(req.files.audio.path, function(result){
