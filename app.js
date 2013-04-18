@@ -31,16 +31,14 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
-
-app.get('/audio/new', function(req, res){
+app.get('/', function(req, res){
   res.send('<form method="post" enctype="multipart/form-data">'
     + '<p>file: <input type="file" name="audio" /></p>'
     + '<p><input type="submit" value="Upload" /></p>'
     + '</form>');
 });
 
-app.post('/audio/new', function(req, res) {
+app.post('/', function(req, res) {
 
   
   var tts = spawn('stenographer', ['-t', 'wav']);
